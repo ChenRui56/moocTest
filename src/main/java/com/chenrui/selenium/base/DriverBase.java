@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
@@ -20,6 +21,13 @@ public class DriverBase {
         driver.close();
     }
 
+    public void get(String url) {
+        driver.get(url);
+    }
+
+    public void quit() {
+        driver.quit();
+    }
 
 
     /**
@@ -28,7 +36,6 @@ public class DriverBase {
      * @return
      */
     private WebDriver selectWebDriver(String browser) {
-        WebDriver driver;
         switch (browser) {
             case Constant.DRIVER_CHROME:
                 driver = new ChromeDriver();
@@ -37,6 +44,7 @@ public class DriverBase {
                 driver = new EdgeDriver();
                 break;
             case Constant.DRIVER_FIREFOX:
+                System.setProperty("webdriver.firefox.bin", "D:\\firefox\\firefox.exe");
                 driver = new FirefoxDriver();
                 break;
             case Constant.DRIVER_IE:
@@ -49,6 +57,8 @@ public class DriverBase {
                 driver = new SafariDriver();
                 break;
         }
+        Actions actions = new Actions(driver);
+        actions.click().perform();
         return driver;
     }
 }

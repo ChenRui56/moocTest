@@ -16,7 +16,7 @@ public class PropertiesUtils {
      * 加载配置文件资源
      */
     private static void loadProperties(){
-        String configure="common/webelement.properties";
+        String configure="webelement.properties";
         try {
             InputStream inputStream=Thread.currentThread().getContextClassLoader().getResourceAsStream(configure);
             Properties propertyFiles=new Properties();
