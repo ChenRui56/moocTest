@@ -1,5 +1,6 @@
-package com.chenrui.selenium.base;
+package com.chenrui.selenium.selenium.base;
 
+import com.chenrui.selenium.base.DriverBase;
 import com.chenrui.selenium.constant.Constant;
 import com.chenrui.selenium.utils.PropertiesUtils;
 import org.apache.log4j.Logger;
@@ -10,7 +11,7 @@ import org.openqa.selenium.WebElement;
  * 页面对象的基类
  */
 public class BasePage {
-    protected Logger log = Logger.getLogger(BasePage.class);
+    protected Logger log = Logger.getLogger(com.chenrui.selenium.base.BasePage.class);
     protected DriverBase driver;
 
     public BasePage(DriverBase driver) {

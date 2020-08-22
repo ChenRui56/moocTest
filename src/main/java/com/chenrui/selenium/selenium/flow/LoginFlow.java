@@ -1,4 +1,4 @@
-package com.chenrui.selenium.flow;
+package com.chenrui.selenium.selenium.flow;
 
 import com.chenrui.selenium.base.DriverBase;
 import com.chenrui.selenium.operation.LoginPageOperation;

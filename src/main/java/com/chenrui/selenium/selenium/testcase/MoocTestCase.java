@@ -1,4 +1,4 @@
-package com.chenrui.selenium.testcase;
+package com.chenrui.selenium.selenium.testcase;
 
 import com.chenrui.selenium.base.DriverBase;
 import com.chenrui.selenium.constant.Constant;

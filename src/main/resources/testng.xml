@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >-->
+<suite name="Test1" parallel="true" thread-count="2">
+    ​
+    <test name="loginTest">
+        <parameter name="userName" value="登录账号"/>
+        <parameter name="password" value="密码"/>
+        <parameter name="expected" value="用户名"/>
+        <classes>
+            <class name="com.chenrui.selenium.testcase.LoginCase" />
+        </classes>
+    </test>
+<!--    <test name="buyTest">-->
+
+<!--    </test>-->
+</suite>

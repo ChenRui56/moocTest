@@ -1,4 +1,4 @@
-package com.chenrui.selenium.utils;
+package com.chenrui.selenium.selenium.utils;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

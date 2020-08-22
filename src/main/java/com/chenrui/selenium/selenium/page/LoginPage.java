@@ -1,4 +1,4 @@
-package com.chenrui.selenium.page;
+package com.chenrui.selenium.selenium.page;
 
 import com.chenrui.selenium.base.BasePage;
 import com.chenrui.selenium.base.DriverBase;

@@ -1,4 +1,4 @@
-package com.chenrui.selenium.operation;
+package com.chenrui.selenium.selenium.operation;
 
 import com.chenrui.selenium.base.DriverBase;
 import com.chenrui.selenium.page.LoginPage;

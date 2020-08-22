@@ -1,4 +1,4 @@
-package com.chenrui.selenium.base;
+package com.chenrui.selenium.selenium.base;
 
 import com.chenrui.selenium.constant.Constant;
 import org.openqa.selenium.WebDriver;
