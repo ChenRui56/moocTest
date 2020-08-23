@@ -1,6 +1,7 @@
 package com.chenrui.selenium.base;
 
 import com.chenrui.selenium.constant.Constant;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -66,4 +67,19 @@ public class DriverBase {
         actions.click().perform();
         return driver;
     }
+
+    public void deleteCookieNamed(String name) {
+        driver.manage().deleteCookieNamed(name);
+
+    }
+
+    public Cookie getCookieNamed(String name) {
+        return driver.manage().getCookieNamed(name);
+    }
+
+    public void addCookie(Cookie cookie) {
+        driver.manage().addCookie(cookie);
+    }
+
+
 }

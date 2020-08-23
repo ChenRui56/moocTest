@@ -10,7 +10,8 @@
             <class name="com.chenrui.selenium.testcase.LoginCase" />
         </classes>
     </test>
-<!--    <test name="buyTest">-->
+    <test name="buyTest">
+        <classes name="com.chenrui.selenium.testcase.BuyCourseCase"/>
 
-<!--    </test>-->
+    </test>
 </suite>
