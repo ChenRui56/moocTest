@@ -1,5 +1,6 @@
 package com.chenrui.selenium.testcase;
 
+import com.chenrui.selenium.base.BaseCase;
 import com.chenrui.selenium.base.DriverBase;
 import com.chenrui.selenium.constant.Constant;
 import com.chenrui.selenium.flow.HomeFlow;
@@ -10,9 +11,8 @@ import org.openqa.selenium.Cookie;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class LoginCase {
-    DriverBase driver;
-    private Logger logger = Logger.getLogger(LoginCase.class);
+public class LoginCase extends BaseCase {
+
     
     @BeforeSuite
     public void beforeSuilt() {
@@ -20,9 +20,9 @@ public class LoginCase {
     }
 
     @BeforeClass
+    @Override
     public void beforeClass() {
-        logger.info("------------------开始执行LoginCase.class----------");
-        driver = new DriverBase(Constant.DRIVER_FIREFOX);
+        super.beforeClass();
         driver.get("https://www.imooc.com/user/newlogin");
     }
 
@@ -40,19 +40,18 @@ public class LoginCase {
         HomeFlow homeFlow = new HomeFlow(driver);
         String realName = homeFlow.getUserName();
         Assert.assertEquals(expected,realName);
+    }
+
+    @AfterMethod
+    public void tearDown() {
         // 将登陆后的cookie保存到配置文件中去
         Cookie cookie = driver.manage().getCookieNamed("apsid");
         PropertiesUtils.updateConfig("cookie.apsid", cookie.getValue(), "cookie");
         logger.info("-----------------cookie更新----------------------");
     }
 
-    @AfterClass
-    public void afterClass() {
-        logger.info("------------------结束执行LoginCase.class----------");
-    }
     @AfterSuite
     public void afterSuit() {
         logger.info("------------------结束执行suit----------");
-        driver.stop();
     }
 }

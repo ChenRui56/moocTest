@@ -1,28 +1,25 @@
 package com.chenrui.selenium.testcase;
 
-import com.chenrui.selenium.base.DriverBase;
-import com.chenrui.selenium.constant.Constant;
+import com.chenrui.selenium.base.BaseCase;
 import com.chenrui.selenium.flow.DetailFlow;
 import com.chenrui.selenium.flow.OrderFlow;
 import com.chenrui.selenium.flow.OrderPayFlow;
 import com.chenrui.selenium.utils.PropertiesUtils;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.Cookie;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class BuyCourseCase {
-    private Logger logger = Logger.getLogger(BuyCourseCase.class);
-    private DriverBase driver;
+public class BuyCourseCase extends BaseCase {
+
     @BeforeClass
+    @Override
     public void beforeClass() {
-        logger.info("----------------开始执行BuyCourseCase-----------------");
-        driver = new DriverBase(Constant.DRIVER_FIREFOX);
+        super.beforeClass();
         // 读取cookie
+        driver.get("https://coding.imooc.com/class/437.html");
         String apsid = PropertiesUtils.getConfig("cookie.apsid");
-        Cookie cookie = new Cookie("apsid", apsid);
+        Cookie cookie = new Cookie("apsid", apsid,"imooc.com","/",null);
         driver.addCookie(cookie);
         driver.get("https://coding.imooc.com/class/437.html");
     }
@@ -30,8 +27,8 @@ public class BuyCourseCase {
     public void testBuyCourse() {
         // 课程详情流程
         DetailFlow detailFlow = new DetailFlow(driver);
-        detailFlow.buyNow();
         String courseName = detailFlow.getOutPut();
+        detailFlow.buyNow();
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
@@ -48,14 +45,10 @@ public class BuyCourseCase {
         }
         //支付中心
         OrderPayFlow orderPayFlow = new OrderPayFlow(driver);
-        orderPayFlow.submit();
         Assert.assertEquals(courseName, orderPayFlow.getOutput());
+        orderPayFlow.submit();
     }
 
 
-    @AfterClass
-    public void afterClass() {
-        logger.info("-----------------------执行结束BuyCourseCase-------------------");
-        driver.stop();
-    }
+
 }

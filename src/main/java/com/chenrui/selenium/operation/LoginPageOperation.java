@@ -21,8 +21,6 @@ public class LoginPageOperation {
      * 输入用户账号
      */
     public void sendKeysUserInput(String userInfo) {
-        WebDriverWait wait = new WebDriverWait(driver.driver,5000);
-        wait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getLocater("login.username")));
          loginPage.getUserInput().sendKeys(userInfo);
     }
 
@@ -47,6 +45,8 @@ public class LoginPageOperation {
      * @return
      */
     public boolean assertLoginPage() {
+        WebDriverWait wait = new WebDriverWait(driver.driver,5);
+        wait.until(ExpectedConditions.presenceOfElementLocated(loginPage.getLocater("login.username")));
         return loginPage.getUserInput().isDisplayed();
     }
 

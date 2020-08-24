@@ -1,9 +1,6 @@
 package com.chenrui.selenium.utils;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
@@ -109,15 +106,16 @@ public class PropertiesUtils {
      * @return
      */
     public static boolean updateConfig(String key, String value,String fileName) {
-        if (StringUtils.isEmpty(key) || StringUtils.isEmpty(value)) {
+        if (StringUtils.isNotEmpty(key) && StringUtils.isNotEmpty(value)) {
             configures.put(key, value);
-
+            String filePath = "./src/main/resources/";
+            filePath += fileName + ".properties";
             // 更新配置文件里的内容
             try {
-                String filePath = ClassLoader.getSystemResource(fileName+".properties").getPath();
-                OutputStream out = new FileOutputStream(filePath);
-                Properties properties = getProperties(fileName + ".properties");
+                OutputStream out = new FileOutputStream(new File(filePath));
+                Properties properties = new Properties();
                 properties.setProperty(key, value);
+                properties.store(out,null);
             } catch (IOException e) {
                 e.printStackTrace();
             }
